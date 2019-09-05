@@ -9,6 +9,25 @@ public:
 	float getX() const { return m_x; }
 	float getY() const { return m_y; }
 
-private:
+	Vector2 operator+(const Vector2& other) const
+	{
+		return Vector2(m_x + other.m_x, m_y + other.m_y);
+	}
+
+	Vector2 operator-(const Vector2& other) const
+	{
+		return Vector2(m_x - other.m_x, m_y - other.m_y);
+	}
+
+	Vector2 operator*(float scalar) const
+	{
+		return Vector2(scalar * m_x, scalar * m_y);
+	}
+
 	float m_x, m_y;
 };
+
+inline Vector2 operator*(float scalar, const Vector2& vector)
+{
+	return Vector2(scalar * vector.m_x, scalar * vector.m_y);
+}
