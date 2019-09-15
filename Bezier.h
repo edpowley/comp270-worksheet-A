@@ -13,5 +13,5 @@ public:
 	void draw(SDL_Renderer *renderer) const;
 
 private:
-	Vector2 m_points[4];
+	Vector2 p0, p1, p2, p3;
 };
