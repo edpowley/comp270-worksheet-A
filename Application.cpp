@@ -55,6 +55,15 @@ void Application::render()
 		drawCarOnTrack(m_carPosition);
 		updateCarPosition();
 	}
+
+	SDL_SetRenderDrawColor(m_renderer, 128, 255, 128, 255);
+	for (const auto& segment : m_track)
+	{
+		segment.draw(m_renderer);
+	}
+
+	drawCarOnTrack(m_carPosition);
+	updateCarPosition();
 }
 
 // Draw a car on the track
@@ -96,6 +105,7 @@ void Application::updateCarPosition()
 		m_carPosition += 0.01f;
 	}
 
+	// Wrap the car position to be in the range 0 to m_track.size()
 	m_carPosition = fmodf(m_carPosition, m_track.size());
 }
 
